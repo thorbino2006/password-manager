@@ -3,18 +3,18 @@ var data = [
         "name": "Google",
         "domain": "google.com",
         "username": "thorben",
-        "password": "1234!" 
+        "password": "1234!"
     },
     {
         "name": "Discord",
         "domain": "discord.com",
         "username": "thorbino",
-        "password": "discord123!" 
+        "password": "discord123!"
     }
 ]
 
 function init() {
-      loadPasswords()
+    loadPasswords()
 }
 init()
 
@@ -35,7 +35,13 @@ function loadPasswords() {
             </p>
             <p class="text-muted">
               Passwort
-              <input type="password" class="form-control" value="${item.password}" readonly="readonly">
+              <div class="input-group">
+              <input type="password" class="form-control" value="${item.password}" id="pwField${index}">
+              <div class="input-group-append">
+                <span class="input-group-text" onclick="toggleEye('pwField${index}')"><i class="fas fa-eye-slash"></i></span>
+                <span class="input-group-text" onclick="alert('hey')"><i class="fas fa-copy"></i></span>
+              </div>
+            </div>
             </p>
             <div class="text-right">
               <!-- text-right = text-align: right -->
@@ -44,5 +50,9 @@ function loadPasswords() {
           </div>
         </div>
         `
-      }); 
+    });
+}
+
+function toggleEye() {
+    document.getElementById
 }
