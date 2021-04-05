@@ -27,7 +27,10 @@ function loadPasswords() {
           <!-- w-400 = width: 40rem (400px), mw-full = max-width: 100% -->
           <div class="card">
             <h2 class="card-title">
-              ${item.name} - ${item.domain}
+            <a href="#" class="navbar-brand">
+            <img src="https://api.faviconkit.com/${item.domain}" alt="...">
+            ${item.name} - ${item.domain}
+            </a>
             </h2>
             <p class="text-muted">
               Username
@@ -38,7 +41,7 @@ function loadPasswords() {
               <div class="input-group">
               <input type="password" class="form-control" value="${item.password}" id="pwField${index}">
               <div class="input-group-append">
-                <span class="input-group-text" onclick="toggleEye('pwField${index}')"><i class="fas fa-eye-slash"></i></span>
+                <span class="input-group-text" onclick="toggleEye('pwField${index}', 'cEye${index}')"><i class="fas fa-eye-slash" id="cEye${index}"></i></span>
                 <span class="input-group-text" onclick="alert('hey')"><i class="fas fa-copy"></i></span>
               </div>
             </div>
@@ -53,6 +56,18 @@ function loadPasswords() {
     });
 }
 
-function toggleEye() {
-    document.getElementById
+function toggleEye(showPW, cEye) {
+    var element = document.getElementById(showPW)
+    var eye = document.getElementById(cEye)
+    if (element.type == "password") {
+        element.type = "text";
+        eye.classList.remove('fa-eye-slash')
+        eye.classList.add('fa-eye')
+        return
+    } if (element.type == "text") {
+        element.type = "password";
+        eye.classList.remove('fa-eye')
+        eye.classList.add('fa-eye-slash')
+        return
+    }
 }
