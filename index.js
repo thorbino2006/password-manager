@@ -42,7 +42,7 @@ function loadPasswords() {
               <input type="password" class="form-control" value="${item.password}" id="pwField${index}">
               <div class="input-group-append">
                 <span class="input-group-text" onclick="toggleEye('pwField${index}', 'cEye${index}')"><i class="fas fa-eye-slash" id="cEye${index}"></i></span>
-                <span class="input-group-text" onclick="alert('hey')"><i class="fas fa-copy"></i></span>
+                <span class="input-group-text" onclick="copyPassword('pwField${index}')"><i class="fas fa-copy"></i></span>
               </div>
             </div>
             </p>
@@ -70,4 +70,16 @@ function toggleEye(showPW, cEye) {
         eye.classList.add('fa-eye-slash')
         return
     }
+}
+
+function copyPassword(id) {
+    /* Get the text field */
+    var copyText = document.getElementById(id);
+    navigator.clipboard.writeText(copyText.value)
+    /* Select the text field */
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+    /* Copy the text inside the text field */
+    document.execCommand("copy");
 }
