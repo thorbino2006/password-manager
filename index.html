@@ -13,8 +13,8 @@
     integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous">
 
   <!-- Favicon and title -->
-  <link rel="icon" href="path/to/fav.png">
-  <title>Starter template - Halfmoon</title>
+  <link rel="icon" href="assets/img/locked.svg">
+  <title>password manager and generator by thorbino</title>
 
   <!-- Halfmoon CSS -->
   <link href="https://cdn.jsdelivr.net/npm/halfmoon@1.1.1/css/halfmoon-variables.min.css" rel="stylesheet" />
@@ -30,6 +30,30 @@
   data-set-preferred-mode-onload="true">
   <!-- Modals go here -->
   <!-- Reference: https://www.gethalfmoon.com/docs/modal -->
+  <div class="modal" id="new" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <a href="#" class="btn close" role="button" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </a>
+        <h5 class="modal-title">Sign in to your account</h5>
+        <form action="..." method="...">
+          <div class="form-group">
+            <label for="username" class="required">Username</label>
+            <input type="text" id="username" class="form-control" placeholder="Username" required="required">
+          </div>
+          <div class="form-group">
+            <label for="password" class="required">Password</label>
+            <input type="password" id="password" class="form-control" placeholder="Password" required="required">
+          </div>
+          <input class="btn btn-primary btn-block" type="submit" value="Sign in">
+        </form>
+        <div class="text-right mt-10"> <!-- text-right = text-align: right, margin-top: 1rem (10px) -->
+          <a href="#new" class="hyperlink">Forgot password?</a> <!-- hyperlink = used on regular links to remove anti-aliasing in dark mode --> 
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Page wrapper start -->
   <div class="page-wrapper with-navbar with-navbar-fixed-bottom">
@@ -53,7 +77,7 @@
         <!-- ml-auto = margin-left: auto -->
         <button class="btn btn-success mr-10" type="button"><i class="fas fa-upload"></i></button>
         <button class="btn btn-secondary mr-10" type="button"><i class="fas fa-download"></i></button>
-        <button class="btn btn-primary mr-10" type="button"><i class="fas fa-file-alt"></i> Eintrag erstellen</button>
+        <a href="#new" class="btn btn-primary mr-10" role="button"><i class="fas fa-file-alt"></i> Eintrag Erstellen</a>
         <!-- Toogle Dark and Light Mode -->
         <button class="btn btn-square mr-10 rounded-circle" type="button" onclick="halfmoon.toggleDarkMode()">
           <span class="hidden-dm"><i class="fas fa-moon"></i>

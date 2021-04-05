@@ -41,14 +41,14 @@ function loadPasswords() {
               <div class="input-group">
               <input type="password" class="form-control" value="${item.password}" id="pwField${index}">
               <div class="input-group-append">
-                <span class="input-group-text" onclick="toggleEye('pwField${index}', 'cEye${index}')"><i class="fas fa-eye-slash" id="cEye${index}"></i></span>
-                <span class="input-group-text" onclick="copyPassword('pwField${index}')"><i class="fas fa-copy"></i></span>
+                <span class="input-group-text" onclick="toggleEye('pwField${index}', 'cEye${index}')" data-toggle="tooltip" data-title="show password"><i class="fas fa-eye-slash" id="cEye${index}"></i></span>
+                <span class="input-group-text" onclick="copyPassword('pwField${index}')" data-toggle="tooltip" data-title="copy Password to Clipboard"><i class="fas fa-copy"></i></span>
               </div>
             </div>
             </p>
             <div class="text-right">
               <!-- text-right = text-align: right -->
-              <a href="#" class="btn">Read more</a>
+              <a href="#" class="btn" data-toggle="tooltip" data-title="Edit the entry"><i class="fas fa-pen"></i> Edit</a>
             </div>
           </div>
         </div>
@@ -82,4 +82,10 @@ function copyPassword(id) {
 
     /* Copy the text inside the text field */
     document.execCommand("copy");
+    halfmoon.initStickyAlert({
+        content: "Your Password was copied to your Clipboard, use <kbd>STRG+V</kbd> to paste it in.",
+        title: "copied",
+        alertType: "alert-success",
+        fillType: "filled-lm"
+      });
 }
