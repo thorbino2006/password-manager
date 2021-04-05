@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <!-- Meta tags -->
   <meta charset="utf-8" />
@@ -8,7 +9,8 @@
   <meta name="viewport" content="width=device-width" />
 
   <!--Font Awsome-->
-  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous">
 
   <!-- Favicon and title -->
   <link rel="icon" href="path/to/fav.png">
@@ -23,7 +25,9 @@
     Learn more: https://www.gethalfmoon.com/docs/customize/#notes-on-browser-compatibility
   -->
 </head>
-<body class="with-custom-webkit-scrollbars with-custom-css-scrollbars" data-dm-shortcut-enabled="true" data-set-preferred-mode-onload="true">
+
+<body class="with-custom-webkit-scrollbars with-custom-css-scrollbars" data-dm-shortcut-enabled="true"
+  data-set-preferred-mode-onload="true">
   <!-- Modals go here -->
   <!-- Reference: https://www.gethalfmoon.com/docs/modal -->
 
@@ -38,23 +42,26 @@
     <nav class="navbar">
       <!-- Navbar brand -->
       <a href="#" class="navbar-brand">
-          <i class="fas fa-key mr-10"></i>
+        <i class="fas fa-key mr-10"></i>
         Password Manager/Generator
       </a>
       <!-- Navbar text -->
-      <span class="navbar-text text-monospace">v3.0 by thorbino</span> <!-- text-monospace = font-family shifted to monospace -->
+      <span class="navbar-text text-monospace">v3.0 by thorbino</span>
+      <!-- text-monospace = font-family shifted to monospace -->
       <!-- Navbar  -->
-      <div class="navbar-content ml-auto"> <!-- ml-auto = margin-left: auto -->
-        <button class="btn btn-success mr-10" type="button"><i class="fas fa-download"></i> Download</button>
+      <div class="navbar-content ml-auto">
+        <!-- ml-auto = margin-left: auto -->
+        <button class="btn btn-success mr-10" type="button"><i class="fas fa-upload"></i></button>
+        <button class="btn btn-secondary mr-10" type="button"><i class="fas fa-download"></i></button>
         <button class="btn btn-primary mr-10" type="button"><i class="fas fa-file-alt"></i> Eintrag erstellen</button>
-         <!-- Toogle Dark and Light Mode -->
+        <!-- Toogle Dark and Light Mode -->
         <button class="btn btn-square mr-10 rounded-circle" type="button" onclick="halfmoon.toggleDarkMode()">
           <span class="hidden-dm"><i class="fas fa-moon"></i>
           </span> <!-- hidden-dm = display: none (only in dark mode) -->
           <span class="hidden-lm"><i class="fas fa-sun"></i></span>
         </button>
       </div>
-      
+
       <!-- Reference: https://www.gethalfmoon.com/docs/navbar -->
     </nav>
     <!-- Navbar end -->
@@ -67,28 +74,29 @@
         1. https://www.gethalfmoon.com/docs/content-and-cards/#building-a-page
         2. https://www.gethalfmoon.com/docs/grid-system/#building-a-dashboard
       -->
-        <div class="w-400 mw-full">
-          <div class="card p-0">
-            <!--Überschrift-->
-            <div class="px-card py-10 border-bottom">
-              <h2 class="card-title font-size-18 m-0">
-                <a href="https://workshop.thorbino.de/">Test</a>
-              </h2>
-            </div>
-            <!--Inhalt-->
-            <div class="content">
-              <h4>Test</h4>
-            </div>
+      <!-- Content -->
+      <div class="w-400 mw-full"> <!-- w-400 = width: 40rem (400px), mw-full = max-width: 100% -->
+        <div class="card">
+          <h2 class="card-title">
+            Discord - discord.com
+          </h2>
+          <p class="text-muted">
+            Username
+            <textarea readonly="readonly">wumpus123</textarea>
+          </p>
+          <div class="text-right"> <!-- text-right = text-align: right -->
+            <a href="#" class="btn">Read more</a>
           </div>
         </div>
-    </div>
-    <!-- Content wrapper end -->
+      </div>
+  </div>
+  <!-- Content wrapper end -->
 
-    <!-- Navbar fixed bottom start -->
-    <nav class="navbar navbar-fixed-bottom">
-      <!-- Reference: https://www.gethalfmoon.com/docs/navbar#navbar-fixed-bottom -->
-    </nav>
-    <!-- Navbar fixed bottom end -->
+  <!-- Navbar fixed bottom start -->
+  <nav class="navbar navbar-fixed-bottom">
+    <!-- Reference: https://www.gethalfmoon.com/docs/navbar#navbar-fixed-bottom -->
+  </nav>
+  <!-- Navbar fixed bottom end -->
 
   </div>
   <!-- Page wrapper end -->
@@ -96,4 +104,5 @@
   <!-- Halfmoon JS -->
   <script src="https://cdn.jsdelivr.net/npm/halfmoon@1.1.1/js/halfmoon.min.js"></script>
 </body>
+
 </html>
