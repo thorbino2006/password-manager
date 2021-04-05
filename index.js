@@ -48,7 +48,7 @@ function loadPasswords() {
             </p>
             <div class="text-right">
               <!-- text-right = text-align: right -->
-              <a href="#" class="btn" data-toggle="tooltip" data-title="Edit the entry"><i class="fas fa-pen"></i> Edit</a>
+              <a href="#" class="btn"><i class="fas fa-pen"></i> Edit</a>
             </div>
           </div>
         </div>
@@ -88,4 +88,17 @@ function copyPassword(id) {
         alertType: "alert-success",
         fillType: "filled-lm"
       });
+}
+
+
+function generatePassword(state) {
+    var content = document.getElementById("new_password")
+    var length = 30,
+        charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!.,-_+#?%&*?",
+        retVal = "";
+    for (var i = 0, n = charset.length; i < length; ++i) {
+        retVal += charset.charAt(Math.floor(Math.random() * n));
+    }
+    content.value = retVal
+    console.log(retVal)
 }
