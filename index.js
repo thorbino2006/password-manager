@@ -85,7 +85,7 @@ function copyPassword(id) {
 function generatePassword(state) {
     var content = document.getElementById(state+"_password")
     var length = 30,
-        charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!.,-_+#?%&*?",
+        charset = "!.,-_+#?%&*?abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
         retVal = "";
     for (var i = 0, n = charset.length; i < length; ++i) {
         retVal += charset.charAt(Math.floor(Math.random() * n));
