@@ -45,15 +45,15 @@
             <input type="text" id="new_domain" class="form-control" placeholder="discord.com" required="required">
             <label for="username" class="required">Username</label>
             <input type="text" id="new_username" class="form-control" placeholder="username" required="required">
-              <label for="full-name" class="required">Password</label>
-              <div class="input-group">
-                  <input type="password" class="form-control" id="new_password" placeholder="123">
-                  <div class="input-group-append" onclick="generatePassword('new')">
-                      <span class="input-group-text"><i class="fas fa-sync"></i></span>
-                  </div>
+            <label for="full-name" class="required">Password</label>
+            <div class="input-group">
+              <input type="password" class="form-control" id="new_password" placeholder="123">
+              <div class="input-group-append" onclick="generatePassword('new')">
+                <span class="input-group-text"><i class="fas fa-sync"></i></span>
               </div>
+            </div>
           </div>
-          <input class="btn btn-primary btn-block"  value="Create" onclick="new_entry()">
+          <input class="btn btn-primary btn-block" value="Create" onclick="new_entry()">
         </form>
       </div>
     </div>
@@ -65,7 +65,6 @@
           <span aria-hidden="true">&times;</span>
         </a>
         <h5 class="modal-title">Edit entry</h5>
-        <form>
           <div class="form-group">
             <label for="username" class="required">Name</label>
             <input type="text" id="edit_name" class="form-control" placeholder="Discord" required="required">
@@ -73,16 +72,18 @@
             <input type="text" id="edit_domain" class="form-control" placeholder="discord.com" required="required">
             <label for="username" class="required">Username</label>
             <input type="text" id="edit_username" class="form-control" placeholder="username" required="required">
-              <label for="full-name" class="required">Password</label>
-              <div class="input-group">
-                  <input type="password" class="form-control" id="edit_password" placeholder="123">
-                  <div class="input-group-append" onclick="generatePassword('edit')">
-                      <span class="input-group-text"><i class="fas fa-sync"></i></span>
-                  </div>
+            <label for="full-name" class="required">Password</label>
+            <div class="input-group">
+              <input type="password" class="form-control" id="edit_password" placeholder="123">
+              <div class="input-group-append" onclick="generatePassword('edit')">
+                <span class="input-group-text"><i class="fas fa-sync"></i></span>
               </div>
+            </div>
           </div>
-          <input class="btn btn-primary btn-block"  value="Edit" onclick="edit_entry()">
-        </form>
+          <div class="text-right">
+            <a class="btn btn-danger" value="Delete" onclick="delete_entry()"><i class="fas fa-trash"></i></a>
+            <a class="btn btn-primary" value="Edit" onclick="edit_entry()">Edit</a>
+          </div>
       </div>
     </div>
   </div>
@@ -106,12 +107,14 @@
       <!-- text-monospace = font-family shifted to monospace -->
       <!-- Navbar  -->
       <form style="display:none">
-      <input type="file" id="fileDialogId">
+        <input type="file" id="fileDialogId">
       </form>
       <div class="navbar-content ml-auto">
         <!-- ml-auto = margin-left: auto -->
-        <button class="btn btn-success mr-10" type="button" onclick="uploadFile()"><i class="fas fa-upload"></i></button>
-        <button class="btn btn-secondary mr-10" type="button" onclick="downloadFile()"><i class="fas fa-download"></i></button>
+        <button class="btn btn-success mr-10" type="button" onclick="uploadFile()"><i
+            class="fas fa-upload"></i></button>
+        <button class="btn btn-secondary mr-10" type="button" onclick="downloadFile()"><i
+            class="fas fa-download"></i></button>
         <a href="#new" class="btn btn-primary mr-10" role="button"><i class="fas fa-file-alt"></i> Eintrag Erstellen</a>
         <!-- Toogle Dark and Light Mode -->
         <button class="btn btn-square mr-10 rounded-circle" type="button" onclick="halfmoon.toggleDarkMode()">
@@ -135,7 +138,7 @@
       -->
       <!-- Content -->
       <div id="content">
-        
+
       </div>
     </div>
     <!-- Content wrapper end -->

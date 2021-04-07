@@ -163,3 +163,15 @@ function load_editEntry(id) {
   document.getElementById("edit_password").value = data[id].password
   currentID = id
 }
+
+function delete_entry() {
+  if (currentID == 0){
+    data.shift()
+  }
+  if (currentID !== 0){
+    data.splice(currentID, currentID)
+  }
+  localStorage.setItem('passwords', JSON.stringify(data))
+  window.location.href = "#"
+  loadPasswords()
+}
