@@ -14,7 +14,7 @@ function loadPasswords() {
     content.innerHTML = ``
     data.forEach(function (item, index) {
         content.innerHTML += `
-        <div class="w-400 mw-full">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-4">
           <!-- w-400 = width: 40rem (400px), mw-full = max-width: 100% -->
           <div class="card">
             <h2 class="card-title">
@@ -174,4 +174,20 @@ function delete_entry() {
   localStorage.setItem('passwords', JSON.stringify(data))
   window.location.href = "#"
   loadPasswords()
+}
+
+function toggleEye2(iconID, elementID, state) {
+  var element = document.getElementById(elementID)
+  var icon = document.getElementById(iconID)
+  if (state == "down") {
+      element.type = "text";
+      icon.classList.remove('fa-eye-slash')
+      icon.classList.add('fa-eye')
+      return
+  } if (state == "up") {
+      element.type = "password";
+     icon.classList.remove('fa-eye')
+     icon.classList.add('fa-eye-slash')
+      return
+  }
 }
