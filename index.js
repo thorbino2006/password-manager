@@ -1,19 +1,10 @@
 var data = [
-    {
-        "name": "Google",
-        "domain": "google.com",
-        "username": "thorben",
-        "password": "1234!"
-    },
-    {
-        "name": "Discord",
-        "domain": "discord.com",
-        "username": "thorbino",
-        "password": "discord123!"
-    }
 ]
+currentID = -1
 
 function init() {
+    if (window.location.href.includes("#")) window.location.href = "/"
+    data = JSON.parse(localStorage.getItem('passwords'))
     loadPasswords()
 }
 init()
@@ -48,7 +39,7 @@ function loadPasswords() {
             </p>
             <div class="text-right">
               <!-- text-right = text-align: right -->
-              <a href="#" class="btn"><i class="fas fa-pen"></i> Edit</a>
+              <a href="#edit" class="btn" onclick="load_editEntry('${index}')"><i class="fas fa-pen"></i> Edit</a>
             </div>
           </div>
         </div>
@@ -92,7 +83,7 @@ function copyPassword(id) {
 
 
 function generatePassword(state) {
-    var content = document.getElementById("new_password")
+    var content = document.getElementById(state+"_password")
     var length = 30,
         charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!.,-_+#?%&*?",
         retVal = "";
@@ -113,6 +104,7 @@ function new_entry() {
         "username": username,
         "password": password
   })
+  localStorage.setItem('passwords', JSON.stringify(data));
   window.location.href = "#"
   loadPasswords()
 }
@@ -138,6 +130,7 @@ $("#fileDialogId").on('change', function() {
   reader.readAsText(file, "UTF-8");
   reader.onload = function (evt) {
     data = JSON.parse(evt.target.result);
+    localStorage.setItem('passwords', JSON.stringify(data))
     loadPasswords()
     halfmoon.initStickyAlert({
       content: "Daten wurden erfolgreich importiert!",
@@ -147,3 +140,26 @@ $("#fileDialogId").on('change', function() {
     });
   }
 })
+
+function edit_entry() {
+  var name = document.getElementById("edit_name").value
+  var domain = document.getElementById("edit_domain").value
+  var username = document.getElementById("edit_username").value
+  var password = document.getElementById("edit_password").value
+
+  data[currentID].name = name
+  data[currentID].domain = domain
+  data[currentID].username = username
+  data[currentID].password = password
+  localStorage.setItem('passwords', JSON.stringify(data))
+  window.location.href = "#"
+  loadPasswords()
+}
+
+function load_editEntry(id) {
+  document.getElementById("edit_name").value = data[id].name
+  document.getElementById("edit_domain").value = data[id].domain
+  document.getElementById("edit_username").value = data[id].username
+  document.getElementById("edit_password").value = data[id].password
+  currentID = id
+}
