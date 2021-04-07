@@ -37,7 +37,7 @@
           <span aria-hidden="true">&times;</span>
         </a>
         <h5 class="modal-title">Create new entry</h5>
-        <form action="..." method="...">
+        <form>
           <div class="form-group">
             <label for="username" class="required">Name</label>
             <input type="text" id="new_name" class="form-control" placeholder="Discord" required="required">
@@ -53,7 +53,7 @@
                   </div>
               </div>
           </div>
-          <input class="btn btn-primary btn-block" type="submit" value="Sign in">
+          <input class="btn btn-primary btn-block"  value="Sign in" onclick="new_entry()">
         </form>
       </div>
     </div>
@@ -77,10 +77,13 @@
       <span class="navbar-text text-monospace">v3.0 by thorbino</span>
       <!-- text-monospace = font-family shifted to monospace -->
       <!-- Navbar  -->
+      <form style="display:none">
+      <input type="file" id="fileDialogId">
+      </form>
       <div class="navbar-content ml-auto">
         <!-- ml-auto = margin-left: auto -->
-        <button class="btn btn-success mr-10" type="button"><i class="fas fa-upload"></i></button>
-        <button class="btn btn-secondary mr-10" type="button"><i class="fas fa-download"></i></button>
+        <button class="btn btn-success mr-10" type="button" onclick="uploadFile()"><i class="fas fa-upload"></i></button>
+        <button class="btn btn-secondary mr-10" type="button" onclick="downloadFile()"><i class="fas fa-download"></i></button>
         <a href="#new" class="btn btn-primary mr-10" role="button"><i class="fas fa-file-alt"></i> Eintrag Erstellen</a>
         <!-- Toogle Dark and Light Mode -->
         <button class="btn btn-square mr-10 rounded-circle" type="button" onclick="halfmoon.toggleDarkMode()">
@@ -120,6 +123,8 @@
 
   <!-- Halfmoon JS -->
   <script src="https://cdn.jsdelivr.net/npm/halfmoon@1.1.1/js/halfmoon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="FileSaver.js"></script>
   <script src="index.js"></script>
 </body>
 

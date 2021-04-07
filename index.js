@@ -20,8 +20,8 @@ init()
 
 function loadPasswords() {
     var content = document.getElementById("content")
+    content.innerHTML = ``
     data.forEach(function (item, index) {
-        console.log(item, index);
         content.innerHTML += `
         <div class="w-400 mw-full">
           <!-- w-400 = width: 40rem (400px), mw-full = max-width: 100% -->
@@ -100,5 +100,50 @@ function generatePassword(state) {
         retVal += charset.charAt(Math.floor(Math.random() * n));
     }
     content.value = retVal
-    console.log(retVal)
 }
+
+function new_entry() {
+  var name = document.getElementById("new_name").value
+  var domain = document.getElementById("new_domain").value
+  var username = document.getElementById("new_username").value
+  var password = document.getElementById("new_password").value
+  data.push({
+        "name": name,
+        "domain": domain,
+        "username": username,
+        "password": password
+  })
+  window.location.href = "#"
+  loadPasswords()
+}
+
+function downloadFile() {
+  var content = JSON.stringify(data)
+// any kind of extension (.txt,.cpp,.cs,.bat)
+var filename = "passwords.json";
+
+var blob = new Blob([content], {
+type: "text/plain;charset=utf-8"
+});
+
+saveAs(blob, filename);
+}
+
+function uploadFile() {
+  document.getElementById("fileDialogId").click()
+}
+$("#fileDialogId").on('change', function() {
+  const file = this.files[0]
+  var reader = new FileReader();
+  reader.readAsText(file, "UTF-8");
+  reader.onload = function (evt) {
+    data = JSON.parse(evt.target.result);
+    loadPasswords()
+    halfmoon.initStickyAlert({
+      content: "Daten wurden erfolgreich importiert!",
+      title: "Success!",
+      alertType: "alert-success",
+      fillType: "filled-lm"
+    });
+  }
+})
