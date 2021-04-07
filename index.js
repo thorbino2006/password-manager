@@ -33,7 +33,7 @@ function loadPasswords() {
               <input type="password" class="form-control" value="${item.password}" id="pwField${index}">
               <div class="input-group-append">
                 <span class="input-group-text" onclick="toggleEye('pwField${index}', 'cEye${index}')" data-toggle="tooltip" data-title="show password"><i class="fas fa-eye-slash" id="cEye${index}"></i></span>
-                <span class="input-group-text" onclick="copyPassword('pwField${index}')" data-toggle="tooltip" data-title="copy Password to Clipboard"><i class="fas fa-copy"></i></span>
+                <span class="input-group-text" onclick="copyPassword('pwField${index}')" data-toggle="tooltip" data-title="copy password to Clipboard"><i class="fas fa-copy"></i></span>
               </div>
             </div>
             </p>
@@ -133,7 +133,7 @@ $("#fileDialogId").on('change', function() {
     localStorage.setItem('passwords', JSON.stringify(data))
     loadPasswords()
     halfmoon.initStickyAlert({
-      content: "Daten wurden erfolgreich importiert!",
+      content: "Data was imported successfully",
       title: "Success!",
       alertType: "alert-success",
       fillType: "filled-lm"
@@ -154,6 +154,12 @@ function edit_entry() {
   localStorage.setItem('passwords', JSON.stringify(data))
   window.location.href = "#"
   loadPasswords()
+  halfmoon.initStickyAlert({
+    content: "the entry was edited successfully",
+    title: "Edited",
+    alertType: "alert-secondary",
+    fillType: "filled-lm"
+  });
 }
 
 function load_editEntry(id) {
@@ -174,6 +180,12 @@ function delete_entry() {
   localStorage.setItem('passwords', JSON.stringify(data))
   window.location.href = "#"
   loadPasswords()
+  halfmoon.initStickyAlert({
+    content: "this entry was successfully deleted!",
+    title: "deleted",
+    alertType: "alert-danger",
+    fillType: "filled-lm"
+  });
 }
 
 function toggleEye2(iconID, elementID, state) {
