@@ -12,12 +12,13 @@ Demo: [https://password.thorbino.de/](https://password.thorbino.de/)
  - password generator
  - toggle between dark/lightmode
  - export/upload feature
+ - **All data is saved locally on your machine or local storage**
 
 # screenshots
 ![Home](https://i.imgur.com/ZL0XrUK.jpg)
 
 
-![edit and delete screen](https://i.imgur.com/TajQDMk.jpg)
+![edit and delete screen](https://i.imgur.com/jJGX512.png)
 
 # How to Host
 ## The easy way
