@@ -28,7 +28,7 @@ function loadPasswords() {
               <input type="text" class="form-control" value="${item.username}" readonly="readonly">
             </p>
             <p class="text-muted">
-              Passwort
+              Password
               <div class="input-group">
               <input type="password" class="form-control" value="${item.password}" id="pwField${index}">
               <div class="input-group-append">
