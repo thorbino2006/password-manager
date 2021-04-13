@@ -2,20 +2,20 @@ var data = []
 var currentID = -1
 
 function init() {
-    if (window.location.href.includes("#")) window.location.href = "/"
-    data = JSON.parse(localStorage.getItem('passwords'))
-    loadPasswords()
+  if (window.location.href.includes("#")) window.location.href = "/"
+  data = JSON.parse(localStorage.getItem('passwords'))
+  loadPasswords()
 }
 init()
 
 function loadPasswords() {
-    var content = document.getElementById("content")
-    content.innerHTML = ``
-    if (data === null) {
-      localStorage.setItem('passwords', "[]")
-        }
-    data.forEach(function (item, index) {
-        content.innerHTML += `
+  var content = document.getElementById("content")
+  content.innerHTML = ``
+  if (data === null) {
+    localStorage.setItem('passwords', "[]")
+  }
+  data.forEach(function (item, index) {
+    content.innerHTML += `
         <div class="col-12 col-sm-12 col-md-6 col-lg-4">
           <!-- w-400 = width: 40rem (400px), mw-full = max-width: 100% -->
           <div class="card">
@@ -46,53 +46,53 @@ function loadPasswords() {
           </div>
         </div>
         `
-    });
+  });
 }
 
 function toggleEye(showPW, cEye) {
-    var element = document.getElementById(showPW)
-    var eye = document.getElementById(cEye)
-    if (element.type == "password") {
-        element.type = "text";
-        eye.classList.remove('fa-eye-slash')
-        eye.classList.add('fa-eye')
-        return
-    } if (element.type == "text") {
-        element.type = "password";
-        eye.classList.remove('fa-eye')
-        eye.classList.add('fa-eye-slash')
-        return
-    }
+  var element = document.getElementById(showPW)
+  var eye = document.getElementById(cEye)
+  if (element.type == "password") {
+    element.type = "text";
+    eye.classList.remove('fa-eye-slash')
+    eye.classList.add('fa-eye')
+    return
+  } if (element.type == "text") {
+    element.type = "password";
+    eye.classList.remove('fa-eye')
+    eye.classList.add('fa-eye-slash')
+    return
+  }
 }
 
 function copyPassword(id) {
-    /* Get the text field */
-    var copyText = document.getElementById(id);
-    navigator.clipboard.writeText(copyText.value)
-    /* Select the text field */
-    copyText.select();
-    copyText.setSelectionRange(0, 99999); /* For mobile devices */
+  /* Get the text field */
+  var copyText = document.getElementById(id);
+  navigator.clipboard.writeText(copyText.value)
+  /* Select the text field */
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); /* For mobile devices */
 
-    /* Copy the text inside the text field */
-    document.execCommand("copy");
-    halfmoon.initStickyAlert({
-        content: "Your Password was copied to your Clipboard, use <kbd>STRG+V</kbd> to paste it in.",
-        title: "copied",
-        alertType: "alert-success",
-        fillType: "filled-lm"
-      });
+  /* Copy the text inside the text field */
+  document.execCommand("copy");
+  halfmoon.initStickyAlert({
+    content: "Your Password was copied to your Clipboard, use <kbd>STRG+V</kbd> to paste it in.",
+    title: "copied",
+    alertType: "alert-success",
+    fillType: "filled-lm"
+  });
 }
 
 
 function generatePassword(state) {
-    var content = document.getElementById(state+"_password")
-    var length = 30,
-        charset = "!.,-_+#?%&*?abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
-        retVal = "";
-    for (var i = 0, n = charset.length; i < length; ++i) {
-        retVal += charset.charAt(Math.floor(Math.random() * n));
-    }
-    content.value = retVal
+  var content = document.getElementById(state + "_password")
+  var length = 30,
+    charset = "!.,-_+#?%&*?abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
+    retVal = "";
+  for (var i = 0, n = charset.length; i < length; ++i) {
+    retVal += charset.charAt(Math.floor(Math.random() * n));
+  }
+  content.value = retVal
 }
 
 function new_entry() {
@@ -104,10 +104,10 @@ function new_entry() {
     console.log("alles leer")
   }
   data.push({
-        "name": name,
-        "domain": domain,
-        "username": username,
-        "password": password
+    "name": name,
+    "domain": domain,
+    "username": username,
+    "password": password
   })
   localStorage.setItem('passwords', JSON.stringify(data));
   window.location.href = "#"
@@ -116,20 +116,20 @@ function new_entry() {
 
 function downloadFile() {
   var content = JSON.stringify(data)
-// any kind of extension (.txt,.cpp,.cs,.bat)
-var filename = "passwords.json";
+  // any kind of extension (.txt,.cpp,.cs,.bat)
+  var filename = "passwords.json";
 
-var blob = new Blob([content], {
-type: "text/plain;charset=utf-8"
-});
+  var blob = new Blob([content], {
+    type: "text/plain;charset=utf-8"
+  });
 
-saveAs(blob, filename);
+  saveAs(blob, filename);
 }
 
 function uploadFile() {
   document.getElementById("fileDialogId").click()
 }
-$("#fileDialogId").on('change', function() {
+$("#fileDialogId").on('change', function () {
   const file = this.files[0]
   var reader = new FileReader();
   reader.readAsText(file, "UTF-8");
@@ -176,10 +176,10 @@ function load_editEntry(id) {
 }
 
 function delete_entry() {
-  if (currentID == 0){
+  if (currentID == 0) {
     data.shift()
   }
-  if (currentID !== 0){
+  if (currentID !== 0) {
     data.splice(currentID, currentID)
   }
   localStorage.setItem('passwords', JSON.stringify(data))
@@ -197,14 +197,14 @@ function toggleEye2(iconID, elementID, state) {
   var element = document.getElementById(elementID)
   var icon = document.getElementById(iconID)
   if (state == "down") {
-      element.type = "text";
-      icon.classList.remove('fa-eye-slash')
-      icon.classList.add('fa-eye')
-      return
+    element.type = "text";
+    icon.classList.remove('fa-eye-slash')
+    icon.classList.add('fa-eye')
+    return
   } if (state == "up") {
-      element.type = "password";
-     icon.classList.remove('fa-eye')
-     icon.classList.add('fa-eye-slash')
-      return
+    element.type = "password";
+    icon.classList.remove('fa-eye')
+    icon.classList.add('fa-eye-slash')
+    return
   }
 }
