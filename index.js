@@ -1,6 +1,5 @@
-var data = [
-]
-currentID = -1
+var data = []
+var currentID = -1
 
 function init() {
     if (window.location.href.includes("#")) window.location.href = "/"
@@ -12,6 +11,9 @@ init()
 function loadPasswords() {
     var content = document.getElementById("content")
     content.innerHTML = ``
+    if (data === null) {
+      localStorage.setItem('passwords', "[]")
+        }
     data.forEach(function (item, index) {
         content.innerHTML += `
         <div class="col-12 col-sm-12 col-md-6 col-lg-4">
@@ -98,6 +100,9 @@ function new_entry() {
   var domain = document.getElementById("new_domain").value
   var username = document.getElementById("new_username").value
   var password = document.getElementById("new_password").value
+  if (data === null) {
+    console.log("alles leer")
+  }
   data.push({
         "name": name,
         "domain": domain,
