@@ -31,6 +31,5 @@ Demo: [https://password.thorbino.de/](https://password.thorbino.de/)
 3. Connect via SFTP to your Server
 4. Upload them to your Server
 
-## comments
 
 **Demo is working!**
