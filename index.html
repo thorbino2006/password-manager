@@ -1,178 +1,509 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <!-- Meta tags -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+      name="viewport"
+    />
+    <meta name="viewport" content="width=device-width" />
 
-<head>
-  <!-- Meta tags -->
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
-  <meta name="viewport" content="width=device-width" />
+    <!--Font Awsome-->
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
 
-  <!--Font Awsome-->
-  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous">
+    <!-- Favicon and title -->
+    <link rel="icon" href="assets/img/locked.svg" />
+    <title>PW-Manager by thorbino</title>
 
-  <!-- Favicon and title -->
-  <link rel="icon" href="assets/img/locked.svg">
-  <title>PW-Manager by thorbino</title>
+    <!-- Meta tags -->
+    <meta property="og:type" content="profile" />
+    <meta property="og:url" content="/" />
+    <meta property="og:title" content="Password Manager" />
+    <meta
+      property="og:description"
+      content="Manage your password locally by thorbino"
+    />
+    <meta property="og:image" content="/assets/img/fav.png" />
+    <meta name="theme-color" content="#ffc300" />
+    <!-- Halfmoon CSS -->
 
-  <!-- Meta tags -->
-  <meta property="og:type" content="profile">
-  <meta property="og:url" content="/">
-  <meta property="og:title" content="Password Manager">
-  <meta property="og:description" content="Manage your password locally by thorbino">
-  <meta property="og:image" content="/assets/img/fav.png">
-  <meta name="theme-color" content="#ffc300">
-  <!-- Halfmoon CSS -->
-
-  <!-- Halfmoon CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/halfmoon@1.1.1/css/halfmoon-variables.min.css" rel="stylesheet" />
-  <!--
+    <!-- Halfmoon CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/halfmoon@1.1.1/css/halfmoon-variables.min.css"
+      rel="stylesheet"
+    />
+    <!--
     Or,
     Use the following (no variables, supports IE11):
     <link href="https://cdn.jsdelivr.net/npm/halfmoon@1.1.1/css/halfmoon.min.css" rel="stylesheet" />
     Learn more: https://www.gethalfmoon.com/docs/customize/#notes-on-browser-compatibility
   -->
-  <script src="https://cdn.jsdelivr.net/npm/pace-js@latest/pace.min.js"></script>
-  <link rel="stylesheet" href="fill-left.css">
-</head>
+    <script src="https://cdn.jsdelivr.net/npm/pace-js@latest/pace.min.js"></script>
+    <link rel="stylesheet" href="fill-left.css" />
+  </head>
 
-<body class="with-custom-webkit-scrollbars with-custom-css-scrollbars" data-dm-shortcut-enabled="true"
-  data-set-preferred-mode-onload="true">
-  <!-- Modals go here -->
-  <!-- Reference: https://www.gethalfmoon.com/docs/modal -->
-  <div class="modal" id="new" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <a href="#" class="btn close" role="button" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </a>
-        <h5 class="modal-title">Create new entry</h5>
-        <form>
+  <body
+    class="with-custom-webkit-scrollbars with-custom-css-scrollbars"
+    data-dm-shortcut-enabled="true"
+    data-set-preferred-mode-onload="true"
+  >
+    <!-- Modals go here -->
+    <!-- Reference: https://www.gethalfmoon.com/docs/modal -->
+    <div class="modal" id="new" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <a href="#" class="btn close" role="button" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </a>
+          <h5 class="modal-title">Create new entry</h5>
+          <form>
+            <div class="form-group">
+              <label for="username" class="required">Name</label>
+              <input
+                type="text"
+                id="new_name"
+                class="form-control"
+                placeholder="Discord"
+                required="required"
+              />
+              <label for="username" class="required">domain</label>
+              <input
+                type="text"
+                id="new_domain"
+                class="form-control"
+                placeholder="discord.com"
+                required="required"
+              />
+              <label for="username" class="required">Username</label>
+              <input
+                type="text"
+                id="new_username"
+                class="form-control"
+                placeholder="username"
+                required="required"
+              />
+              <label for="full-name" class="required">Password</label>
+              <div class="input-group">
+                <input
+                  type="password"
+                  class="form-control"
+                  id="new_password"
+                  placeholder="123"
+                />
+                <div class="input-group-append">
+                  <span
+                    class="input-group-text"
+                    data-toggle="tooltip"
+                    data-title="hold to show the password"
+                    onmousedown="toggleEye2('createIcon', 'new_password', 'down')"
+                    onmouseup="toggleEye2('createIcon', 'new_password', 'up')"
+                    ><i class="fas fa-eye-slash" id="createIcon"></i
+                  ></span>
+                  <span
+                    class="input-group-text"
+                    data-toggle="tooltip"
+                    data-title="generate a secure password"
+                    onclick="generatePassword('new')"
+                    ><i class="fas fa-sync"></i
+                  ></span>
+                </div>
+              </div>
+            </div>
+            <p class="btn btn-primary btn-block" onclick="new_entry()">
+              Create
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!--Edit Entry-->
+    <div class="modal" id="edit" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <a href="#" class="btn close" role="button" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </a>
+          <h5 class="modal-title"><i class="fas fa-pen"></i> Edit entry</h5>
           <div class="form-group">
             <label for="username" class="required">Name</label>
-            <input type="text" id="new_name" class="form-control" placeholder="Discord" required="required">
+            <input
+              type="text"
+              id="edit_name"
+              class="form-control"
+              placeholder="Discord"
+              required="required"
+            />
             <label for="username" class="required">domain</label>
-            <input type="text" id="new_domain" class="form-control" placeholder="discord.com" required="required">
+            <input
+              type="text"
+              id="edit_domain"
+              class="form-control"
+              placeholder="discord.com"
+              required="required"
+            />
             <label for="username" class="required">Username</label>
-            <input type="text" id="new_username" class="form-control" placeholder="username" required="required">
+            <input
+              type="text"
+              id="edit_username"
+              class="form-control"
+              placeholder="username"
+              required="required"
+            />
             <label for="full-name" class="required">Password</label>
             <div class="input-group">
-              <input type="password" class="form-control" id="new_password" placeholder="123">
+              <input
+                type="password"
+                class="form-control"
+                id="edit_password"
+                placeholder="123"
+              />
               <div class="input-group-append">
-                <span class="input-group-text" data-toggle="tooltip" data-title="hold to show the password" onmousedown="toggleEye2('createIcon', 'new_password', 'down')" onmouseup="toggleEye2('createIcon', 'new_password', 'up')"><i class="fas fa-eye-slash" id="createIcon"></i></span>
-                <span class="input-group-text" data-toggle="tooltip" data-title="generate a secure password" onclick="generatePassword('new')"><i class="fas fa-sync"></i></span>
+                <span
+                  class="input-group-text"
+                  data-toggle="tooltip"
+                  data-title="hold to unhinde the password"
+                  onmousedown="toggleEye2('editIcon', 'edit_password', 'down')"
+                  onmouseup="toggleEye2('editIcon', 'edit_password', 'up')"
+                  ><i class="fas fa-eye-slash" id="editIcon"></i
+                ></span>
+                <span
+                  class="input-group-text"
+                  data-toggle="tooltip"
+                  data-title="generate a secure password"
+                  onclick="generatePassword('edit')"
+                  ><i class="fas fa-sync"></i
+                ></span>
               </div>
             </div>
           </div>
-          <p class="btn btn-primary btn-block" onclick="new_entry()">Create</p>
-        </form>
-      </div>
-    </div>
-  </div>
-  <!--Edit Entry-->
-  <div class="modal" id="edit" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <a href="#" class="btn close" role="button" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </a>
-        <h5 class="modal-title"><i class="fas fa-pen"></i> Edit entry</h5>
-        <div class="form-group">
-          <label for="username" class="required">Name</label>
-          <input type="text" id="edit_name" class="form-control" placeholder="Discord" required="required">
-          <label for="username" class="required">domain</label>
-          <input type="text" id="edit_domain" class="form-control" placeholder="discord.com" required="required">
-          <label for="username" class="required">Username</label>
-          <input type="text" id="edit_username" class="form-control" placeholder="username" required="required">
-          <label for="full-name" class="required">Password</label>
-          <div class="input-group">
-            <input type="password" class="form-control" id="edit_password" placeholder="123">
-            <div class="input-group-append">
-              <span class="input-group-text" data-toggle="tooltip" data-title="hold to unhinde the password" onmousedown="toggleEye2('editIcon', 'edit_password', 'down')" onmouseup="toggleEye2('editIcon', 'edit_password', 'up')"><i class="fas fa-eye-slash" id="editIcon"></i></span>
-              <span class="input-group-text" data-toggle="tooltip" data-title="generate a secure password" onclick="generatePassword('edit')"><i class="fas fa-sync"></i></span>
-            </div>
+          <div class="text-right">
+            <a
+              class="btn btn-danger"
+              value="Delete"
+              onclick="delete_entry()"
+              data-toggle="tooltip"
+              data-title="delete entry"
+              ><i class="fas fa-trash"></i
+            ></a>
+            <a class="btn btn-primary" value="Edit" onclick="edit_entry()"
+              >Edit</a
+            >
           </div>
         </div>
-        <div class="text-right">
-          <a class="btn btn-danger" value="Delete" onclick="delete_entry()" data-toggle="tooltip" data-title="delete entry"><i class="fas fa-trash"></i></a>
-          <a class="btn btn-primary" value="Edit" onclick="edit_entry()">Edit</a>
-        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Page wrapper start -->
-  <div class="page-wrapper with-navbar with-navbar-fixed-bottom">
+    <!-- Page wrapper start -->
+    <div class="page-wrapper with-navbar with-navbar-fixed-bottom">
+      <!-- Sticky alerts (toasts), empty container -->
+      <!-- Reference: https://www.gethalfmoon.com/docs/sticky-alerts-toasts -->
+      <div class="sticky-alerts"></div>
 
-    <!-- Sticky alerts (toasts), empty container -->
-    <!-- Reference: https://www.gethalfmoon.com/docs/sticky-alerts-toasts -->
-    <div class="sticky-alerts"></div>
+      <!-- Navbar start -->
+      <nav class="navbar">
+        <!-- Navbar brand -->
+        <a href="#" class="navbar-brand">
+          <i class="fas fa-key mr-10"></i>
+          Password Manager/Generator
+        </a>
+        <!-- Navbar text -->
+        <span class="navbar-text text-monospace">v1.1 by thorbino</span>
+        <!-- text-monospace = font-family shifted to monospace -->
+        <!-- Navbar  -->
+        <form style="display: none">
+          <input type="file" id="fileDialogId" />
+        </form>
+        <div class="navbar-content ml-auto">
+          <!-- ml-auto = margin-left: auto -->
+          <button
+            class="btn btn-success mr-10"
+            type="button"
+            onclick="uploadFile()"
+          >
+            <i class="fas fa-upload"></i>
+          </button>
+          <button
+            class="btn btn-secondary mr-10"
+            type="button"
+            onclick="downloadFile()"
+          >
+            <i class="fas fa-download"></i>
+          </button>
+          <a href="#new" class="btn btn-primary mr-10" role="button"
+            ><i class="fas fa-file-alt"></i> Create Entry</a
+          >
+          <!-- Toogle Dark and Light Mode -->
+          <button
+            class="btn btn-square mr-10 rounded-circle"
+            type="button"
+            onclick="halfmoon.toggleDarkMode()"
+          >
+            <span class="hidden-dm"><i class="fas fa-moon"></i> </span>
+            <!-- hidden-dm = display: none (only in dark mode) -->
+            <span class="hidden-lm"><i class="fas fa-sun"></i></span>
+          </button>
+        </div>
 
-    <!-- Navbar start -->
-    <nav class="navbar">
-      <!-- Navbar brand -->
-      <a href="#" class="navbar-brand">
-        <i class="fas fa-key mr-10"></i>
-        Password Manager/Generator
-      </a>
-      <!-- Navbar text -->
-      <span class="navbar-text text-monospace">v1.0 by thorbino</span>
-      <!-- text-monospace = font-family shifted to monospace -->
-      <!-- Navbar  -->
-      <form style="display:none">
-        <input type="file" id="fileDialogId">
-      </form>
-      <div class="navbar-content ml-auto">
-        <!-- ml-auto = margin-left: auto -->
-        <button class="btn btn-success mr-10" type="button" onclick="uploadFile()"><i
-            class="fas fa-upload"></i></button>
-        <button class="btn btn-secondary mr-10" type="button" onclick="downloadFile()"><i
-            class="fas fa-download"></i></button>
-        <a href="#new" class="btn btn-primary mr-10" role="button"><i class="fas fa-file-alt"></i> Create Entry</a>
-        <!-- Toogle Dark and Light Mode -->
-        <button class="btn btn-square mr-10 rounded-circle" type="button" onclick="halfmoon.toggleDarkMode()">
-          <span class="hidden-dm"><i class="fas fa-moon"></i>
-          </span> <!-- hidden-dm = display: none (only in dark mode) -->
-          <span class="hidden-lm"><i class="fas fa-sun"></i></span>
-        </button>
-      </div>
+        <!-- Reference: https://www.gethalfmoon.com/docs/navbar -->
+      </nav>
+      <!-- Navbar end -->
 
-      <!-- Reference: https://www.gethalfmoon.com/docs/navbar -->
-    </nav>
-    <!-- Navbar end -->
-
-    <!-- Content wrapper start -->
-    <div class="content-wrapper">
-      <!--
+      <!-- Content wrapper start -->
+      <div class="content-wrapper">
+        <!--
         Add your page's main content here
         Examples:
         1. https://www.gethalfmoon.com/docs/content-and-cards/#building-a-page
         2. https://www.gethalfmoon.com/docs/grid-system/#building-a-dashboard
       -->
-      <!-- Content -->
-      <div class="container-fluid">
-        <div class="row" id="content">
+        <!-- Content -->
+        <div class="container-fluid">
+          <div class="row" id="content"></div>
+        </div>
+      </div>
+      <!-- Content wrapper end -->
 
+      <!-- Navbar fixed bottom start -->
+      <nav class="navbar navbar-fixed-bottom">
+        <!-- Reference: https://www.gethalfmoon.com/docs/navbar#navbar-fixed-bottom -->
+        <ul class="navbar-nav ml-left">
+          <!-- ml-auto = margin-left: auto -->
+          <li class="nav-item">
+            <a
+              href="https://github.com/thorbino2006/password-manager"
+              class="nav-link"
+              target="_blank"
+              ><i class="fab fa-github mr-10"></i>View Repository on Github</a
+            >
+          </li>
+        </ul>
+        <div class="ml-auto">
+          <a href="#faq" class="btn" role="button"><i class="fas fa-question-circle"></i> FAQ</a>
+          <a href="#changelog" class="btn" role="button"><i class="fas fa-clipboard-list"></i> Changelog</a>
+        </div>
+        <!-- Navbar text -->
+        <span class="navbar-text ml-auto">
+          &copy; thorbino, All rights reserved
+        </span>
+      </nav>
+      <!-- Navbar fixed bottom end -->
+
+      <!-- FAQ -->
+      <div
+        class="modal modal-full ie-scroll-fix"
+        id="faq"
+        tabindex="-1"
+        role="dialog"
+      >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <a href="#" class="close" role="button" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </a>
+            <div class="container">
+              <div class="row">
+                <div class="col-md-8 offset-md-2">
+                  <!-- Article here -->
+                    
+                  <!-- Erste Frage -->
+                  <details class="collapse-panel w-full mw-full" open>
+                    <!-- w-400 = width: 40rem (400px), mw-full = max-width: 100% -->
+                    <summary class="collapse-header without-arrow">
+                      Can we see your Passwords?
+                    </summary>
+                    <div class="collapse-content">
+                      <span class="font-weight-bold">No</span><br>
+                      We can't see your Passwords
+                    </div>
+                  </details>
+
+                  <!-- Zweite Frage -->
+                  <details class="collapse-panel w-full mw-full mt-20" open>
+                    <!-- w-400 = width: 40rem (400px), mw-full = max-width: 100% -->
+                    <summary class="collapse-header without-arrow">
+                      Can you see my e-mail?
+                    </summary>
+                    <div class="collapse-content">
+                      <span class="font-weight-bold">No</span><br>
+                      We can't see your e-mail
+                    </div>
+                  </details>
+
+                  <!-- Dritte Frage -->
+                  <details class="collapse-panel w-full mw-full mt-20" open>
+                    <!-- w-400 = width: 40rem (400px), mw-full = max-width: 100% -->
+                    <summary class="collapse-header without-arrow">
+                      Where are my Data saved?
+                    </summary>
+                    <div class="collapse-content">
+                      Your Data are Saved locally in your Brwoser cache
+                    </div>
+                  </details>
+
+                  <!-- Vierte Frage -->
+                  <details class="collapse-panel w-full mw-full mt-20" open>
+                    <!-- w-400 = width: 40rem (400px), mw-full = max-width: 100% -->
+                    <summary class="collapse-header without-arrow">
+                      How does the Password Generator work?
+                    </summary>
+                    <div class="collapse-content">
+                      The generator generates a password that includes:
+                      <ul>
+                        <li>
+                            Includes Symbols <span class="code">!.,-_+#?%&*?</span>
+                        </li>
+                        <li>
+                          Inlcudes Lowercase Characters <span class="code">abcdefghijklmnopqrstuvwxyz</span>
+                        </li>
+                        <li>
+                          Inlcudes Uppercase Characters <span class="code">ABCDEFGHIJKLMNOPQRSTUVWXYZ</span>
+                        </li>
+                        <li>
+                          Inlcudes Numbers <span class="code">0123456789</span>
+                        </li>
+                        <li>
+                          Has 30 characters <span class="code">._&0#i0x9wka+JqyJavQt3voGm.lh&</span>
+                        </li>
+                    </ul>
+                    <br>Example Password <span class="code">5*-wMXBqyNaOAb.Y21cp-HM_*&HsfS</span>
+                    </div>
+                  </details>
+
+                  <!-- Fünfte Frage -->
+                  <details class="collapse-panel w-full mw-full mt-20" open>
+                    <!-- w-400 = width: 40rem (400px), mw-full = max-width: 100% -->
+                    <summary class="collapse-header without-arrow">
+                      Can i lose my Data?
+                    </summary>
+                    <div class="collapse-content">
+                      <span class="font-weight-bold">Yes</span><br>
+                      When you clear your Cache cleared of your Browser, because the Data are saved in the Cache of your Browser
+                    </div>
+                  </details>
+
+                  <!-- Sechste Frage -->
+                  <details class="collapse-panel w-full mw-full mt-20" open>
+                    <!-- w-400 = width: 40rem (400px), mw-full = max-width: 100% -->
+                    <summary class="collapse-header without-arrow">
+                      Can I view my data in the browser cache?
+                    </summary>
+                    <div class="collapse-content">
+                      <span class="font-weight-bold">Yes</span><br>
+                      You need to press <kbd>F12</kbd>, in the Navbar at the top you need to click on<br>
+                      <span class="code">Application>Storage>Local Storage>https://password.thorbino.de</span>
+                      and there you can see the Data
+                      <div class="row">		
+                        <div class="col-10">
+                          <!-- Responsive image -->
+                          <img src="assets/img/open-in-console.gif" class="img-fluid" alt="responive image">
+                        </div>
+                      </div>
+                    </div>
+                  </details>
+
+                  <!-- Siebte Frage -->
+                  <details class="collapse-panel w-full mw-full mt-20" open>
+                    <!-- w-400 = width: 40rem (400px), mw-full = max-width: 100% -->
+                    <summary class="collapse-header without-arrow">
+                      Can I backup/export my passwords?
+                    </summary>
+                    <div class="collapse-content">
+                      <span class="font-weight-bold">Yes</span><br>
+                      You have to click on the <span class="text-secondary">Download-Icon</span> at the top of the navbar, your data will be exported, save the <span class="code">passwords.json</span> file on your PC.<br>
+                      <div class="row">		
+                        <div class="col-10">
+                          <!-- Responsive image -->
+                          <img src="assets/img/export.gif" class="img-fluid" alt="responive image">
+                        </div>
+                      </div>
+                    </div>
+                  </details>
+
+                  <!-- Achte Frage -->
+                  <details class="collapse-panel w-full mw-full mt-20" open>
+                    <!-- w-400 = width: 40rem (400px), mw-full = max-width: 100% -->
+                    <summary class="collapse-header without-arrow">
+                      How to import my passwords?
+                    </summary>
+                    <div class="collapse-content">
+                      <span class="font-weight-bold">Yes</span><br>
+                      In the navbar go to the <span class="text-success">Upload-Icon</span> and select the exported <span class="code">password.json</span> file in the explorer window.
+                      <div class="row">		
+                        <div class="col-10">
+                          <!-- Responsive image -->
+                          <img src="assets/img/import.gif" class="img-fluid" alt="responive image">
+                        </div>
+                    </div>
+                  </details>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Changelog -->
+      <div
+        class="modal modal-full ie-scroll-fix"
+        id="changelog"
+        tabindex="-1"
+        role="dialog"
+      >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <a href="#" class="close" role="button" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </a>
+            <div class="container">
+              <div class="row">
+                <div class="col-md-8 offset-md-2">
+                  <!-- Article here -->
+                  ...
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <!-- Content wrapper end -->
 
-    <!-- Navbar fixed bottom start -->
-    <nav class="navbar navbar-fixed-bottom">
-      <!-- Reference: https://www.gethalfmoon.com/docs/navbar#navbar-fixed-bottom -->
-    </nav>
-    <!-- Navbar fixed bottom end -->
+    <!-- Test -->
 
-  </div>
-  <!-- Page wrapper end -->
+    <div class="modal" id="modal-1" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <a href="#" class="close" role="button" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </a>
+          <h5 class="modal-title">Modal title</h5>
+          <p>
+            This is the modal content. Almost any type of content can be presented to the user here.
+          </p>
+          <div class="text-right mt-20"> <!-- text-right = text-align: right, mt-20 = margin-top: 2rem (20px) -->
+            <a href="#" class="btn mr-5" role="button">Close</a>
+            <a href="#" class="btn btn-primary" role="button">I understand</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Page wrapper end -->
 
-  <!-- Halfmoon JS -->
-  <script src="https://cdn.jsdelivr.net/npm/halfmoon@1.1.1/js/halfmoon.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="FileSaver.js"></script>
-  <script src="index.js"></script>
-</body>
-
+    <!-- Halfmoon JS -->
+    <script src="https://cdn.jsdelivr.net/npm/halfmoon@1.1.1/js/halfmoon.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/6828172413.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="FileSaver.js"></script>
+    <script src="index.js"></script>
+  </body>
 </html>
