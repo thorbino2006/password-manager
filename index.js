@@ -20,14 +20,19 @@ function loadPasswords() {
           <!-- w-400 = width: 40rem (400px), mw-full = max-width: 100% -->
           <div class="card">
             <h2 class="card-title">
-            <a href="#" class="navbar-brand">
+            <a href="https://${item.domain}" target="_blank" class="navbar-brand">
             <img src="https://api.faviconkit.com/${item.domain}" alt="...">
             ${item.name} - ${item.domain}
             </a>
             </h2>
             <p class="text-muted">
               Username
-              <input type="text" class="form-control" value="${item.username}" readonly="readonly">
+              <div class="input-group">
+              <input type="text" class="form-control" value="${item.username}" id="usernameField${index}" readonly="readonly">
+              <div class="input-group-append">
+                <span class="input-group-text" onclick="copyUsername('usernameField${index}')" data-toggle="tooltip" data-title="copy username to Clipboard"><i class="fas fa-copy"></i></span>
+              </div>
+              </div>
             </p>
             <p class="text-muted">
               Password
@@ -46,6 +51,24 @@ function loadPasswords() {
           </div>
         </div>
         `
+  });
+}
+
+function copyUsername(id) {
+  /* Get the text field */
+  var copyText = document.getElementById(id);
+  navigator.clipboard.writeText(copyText.value)
+  /* Select the text field */
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+  /* Copy the text inside the text field */
+  document.execCommand("copy");
+  halfmoon.initStickyAlert({
+    content: "The Username was copied to your Clipboard, use <kbd>STRG+V</kbd> to paste it in.",
+    title: "copied",
+    alertType: "alert-success",
+    fillType: "filled-lm"
   });
 }
 
