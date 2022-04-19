@@ -20,7 +20,7 @@ function loadPasswords() {
           <!-- w-400 = width: 40rem (400px), mw-full = max-width: 100% -->
           <div class="card">
             <h2 class="card-title">
-            <a href="https://${item.domain}" target="_blank" class="navbar-brand">
+            <a href="https://${item.domain}/login" target="_blank" class="navbar-brand">
             <img src="https://api.faviconkit.com/${item.domain}" alt="...">
             ${item.name} - ${item.domain}
             </a>
