@@ -54,6 +54,22 @@ function loadPasswords() {
   });
 }
 
+function toggleEye(showPW, cEye) {
+  var element = document.getElementById(showPW)
+  var eye = document.getElementById(cEye)
+  if (element.type == "password") {
+    element.type = "text";
+    eye.classList.remove('fa-eye-slash')
+    eye.classList.add('fa-eye')
+    return
+  } if (element.type == "text") {
+    element.type = "password";
+    eye.classList.remove('fa-eye')
+    eye.classList.add('fa-eye-slash')
+    return
+  }
+}
+
 function copyUsername(id) {
   /* Get the text field */
   var copyText = document.getElementById(id);
@@ -70,22 +86,6 @@ function copyUsername(id) {
     alertType: "alert-success",
     fillType: "filled-lm"
   });
-}
-
-function toggleEye(showPW, cEye) {
-  var element = document.getElementById(showPW)
-  var eye = document.getElementById(cEye)
-  if (element.type == "password") {
-    element.type = "text";
-    eye.classList.remove('fa-eye-slash')
-    eye.classList.add('fa-eye')
-    return
-  } if (element.type == "text") {
-    element.type = "password";
-    eye.classList.remove('fa-eye')
-    eye.classList.add('fa-eye-slash')
-    return
-  }
 }
 
 function copyPassword(id) {
