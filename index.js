@@ -1,11 +1,15 @@
+let userVersion = localStorage.getItem('version')||0
+let currentVersion = 2
 var data = []
 var currentID = -1
+var showedUpdate = []
 
 function init() {
   if (window.location.href.includes("#")) window.location.href = "/"
   data = JSON.parse(localStorage.getItem('passwords'))
   loadPasswords()
 }
+
 init()
 
 function loadPasswords() {
@@ -13,6 +17,7 @@ function loadPasswords() {
   content.innerHTML = ``
   if (data === null) {
     localStorage.setItem('passwords', "[]")
+    init()
   }
   data.forEach(function (item, index) {
     content.innerHTML += `
@@ -231,3 +236,8 @@ function toggleEye2(iconID, elementID, state) {
     return
   }
 }
+
+  if(userVersion < currentVersion){
+    halfmoon.toggleModal('changelog')
+    localStorage.setItem('version', currentVersion)
+  }
