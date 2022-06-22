@@ -56,49 +56,6 @@
   >
     <!-- Modals go here -->
     <!-- Reference: https://www.gethalfmoon.com/docs/modal -->
-    <div class="modal modal-full ie-scroll-fix"
-    id="updateWindowModal"
-    tabindex="-1"
-    role="dialog"
-  >
-    <div class="modal-dialog" role="document" data-overlay-dismissal-disabled="true" data-esc-dismissal-disabled="true">
-      <div class="modal-content">
-        <button class="close" data-dismiss="modal" type="button" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <div class="container">
-          <div class="row">
-            <div class="col-md-8 offset-md-2">
-              <!-- Article here -->
-
-              <p class="font-size-24 font-weight-bold text-center"><i class="fas fa-hammer"></i> Changelogs <i class="fas fa-hammer"></i></p>
-              <br>
-              <!-- V.1.2 -->
-              <details class="collapse-panel w-full mw-full" open>
-                <!-- w-400 = width: 40rem (400px), mw-full = max-width: 100% -->
-                <summary class="collapse-header without-arrow">
-                  <p class="font-weight-bold">V.1.2</p>
-                </summary>
-                <div class="collapse-content">
-                  <!--S<span class="font-weight-bold">No</span><br>-->
-                  <p class="font-size-22 text-success">New</p>
-                  <ul>
-                    <li>A FAQ with common questions and answer</li>
-                    <li>A changelog, with new features, and revisions</li>
-                  </ul>
-                  <p class="font-size-22 text-secondary">Changes</p>
-                  <ul>
-                    <li>Copy user name function</li>
-                    <li>If you click on the title of the map, you will be redirected to the given URL</li>
-                  </ul>
-                </div>
-              </details>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
     <div class="modal" id="new" tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -257,7 +214,7 @@
           Password Manager/Generator
         </a>
         <!-- Navbar text -->
-        <span class="navbar-text text-monospace">v1.2 by thorbino</span>
+        <span class="navbar-text text-monospace" id="versionWebsite">v1.2 by thorbino</span>
         <!-- text-monospace = font-family shifted to monospace -->
         <!-- Navbar  -->
         <form style="display: none">
