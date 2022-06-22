@@ -5,6 +5,11 @@ If you like it, please star this repository.
 
 Demo: [https://password.thorbino.de/](https://password.thorbino.de/)
 
+# NEW VERSION RELEASED V.1.2
+
+ - More Features
+ - FAQ, Changelog and Information added
+
 # features
 
  - automatically displayed website icon
@@ -15,7 +20,7 @@ Demo: [https://password.thorbino.de/](https://password.thorbino.de/)
  - **All data is saved locally on your machine or local storage**
 
 # screenshots
-![Home](https://i.imgur.com/ZL0XrUK.jpg)
+![Home](https://i.imgur.com/Mp0ARlu.png)
 
 
 ![edit and delete screen](https://i.imgur.com/jJGX512.png)
